@@ -1,0 +1,62 @@
+button {
+  align-items: center;
+  background: var(--duo-background-400);
+  background-clip: padding-box;
+  border: solid 1px transparent;
+  border-radius: 4px;
+  box-sizing: border-box;
+
+  color: var(--duo-font-color);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: var(--duo-font-family);
+  font-size: calc(1rem * 0.875);
+  font-weight: 400;
+  line-height: 1;
+  height: 44px;
+
+  margin: 0;
+  padding: 0 calc(1em * 1.8);
+  position: relative;
+  /* transition: 300ms ease-in-out; */
+  user-select: none;
+  outline: none;
+}
+
+button:before,
+button:after {
+  background: transparent;
+  content: "";
+  position: absolute;
+  margin: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+button:after {
+  background: transparent;
+  opacity: 0.2;
+  border-radius: 6px;
+  z-index: -2;
+  margin: 0px;
+  transition: 300ms ease-in-out;
+}
+
+button:before {
+  background: var(--duo-border-400);
+  border-radius: inherit;
+  margin: -1px;
+  z-index: -1;
+}
+
+button:focus:before,
+button:hover:before {
+  background: var(--duo-color-400);
+}
+
+button:focus:after {
+  background: var(--duo-color-400);
+  margin: -4px;
+}

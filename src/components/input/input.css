@@ -1,0 +1,141 @@
+:host {
+  align-items: baseline;
+  background: var(--duo-background-400);
+  background-clip: padding-box;
+  border: solid 1px transparent;
+  border-radius: 4px;
+  box-sizing: border-box;
+  display: flex;
+  font-size: calc(1rem * 0.875);
+  font-family: var(--duo-font-family);
+  padding: 0;
+  position: relative;
+}
+
+:host:before,
+:host:after {
+  background: transparent;
+  content: "";
+  position: absolute;
+  margin: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+:host:before {
+  background: var(--duo-border-400);
+  border-radius: inherit;
+  margin: -1px;
+  z-index: -1;
+}
+
+:host(:focus-within):before,
+:host(:hover):before {
+  background: var(--duo-color-400);
+}
+
+:host:after {
+  background: transparent;
+  opacity: 0.2;
+  border-radius: 6px;
+  z-index: -2;
+  margin: 0px;
+  transition: 300ms ease-in-out;
+}
+
+:host(:focus-within):after {
+  background: var(--duo-color-400);
+  margin: -4px;
+}
+
+input {
+  border: none;
+  background-color: transparent;
+  font-size: calc(1rem * 0.875);
+  font-family: var(--duo-font-family);
+  padding: 0 calc(1em * 1.4);
+  line-height: 1;
+  height: 44px;
+  width: 100%;
+}
+
+input:focus {
+  outline: none;
+}
+
+/* .addon {
+  background: transparent;
+  align-self: stretch;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 12px;
+
+  .control {
+    height: 60%;
+    display: inline-flex;
+    align-items: center;
+    margin-left: -12px;
+    margin-right: -12px;
+    padding: 0 12px;
+  }
+
+  &:first-child > .input__addon__control:last-child {
+    border-right: 1px solid $color-border-400;
+    margin-left: -12px;
+  }
+
+  &:last-child > .input__addon__control:first-child {
+    border-left: 1px solid $color-border-400;
+    margin-right: -12px;
+  }
+}
+
+& > input {
+  border: none;
+  background-color: transparent;
+  color: $color-font;
+  font-family: map-val($typography, "--xui-font-family");
+  font-size: 1em;
+  padding: calc(#{map-val($typography, "--xui-font-size--base")} * 0.8) #{map-val(
+      $typography,
+      "--xui-font-size--base"
+    )};
+  padding: 0 #{map-val($typography, "--xui-font-size--base")};
+  line-height: 3;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+&.hover,
+&:hover {
+  border-color: $color-primary-400;
+}
+
+&.focus:focus-within,
+&:focus-within {
+  border-color: $color-primary-400;
+  box-shadow: 0 0 0 2px $color-primary-300;
+}
+
+&.active,
+&:active {
+  border-color: $color-primary-600;
+  box-shadow: 0 0 0 2px $color-primary-300;
+}
+
+&[disabled] {
+  background: $color-border-300;
+  border-color: $color-border-600;
+  pointer-events: none;
+
+  &.focus,
+  &:focus,
+  &:focus-within {
+    box-shadow: none;
+  }
+} */

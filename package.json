@@ -1,0 +1,32 @@
+{
+  "name": "duo",
+  "version": "0.0.1",
+  "author": "Sebastian Busek <ja@sebastianbusek.cz>",
+  "description": "Simple form components",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "es2015": "dist/esm/index.mjs",
+  "es2017": "dist/esm/index.mjs",
+  "types": "dist/types/index.d.ts",
+  "collection": "dist/collection/collection-manifest.json",
+  "collection:main": "dist/collection/index.js",
+  "unpkg": "dist/duo/duo.js",
+  "files": [
+    "dist/",
+    "loader/"
+  ],
+  "scripts": {
+    "build": "stencil build --docs",
+    "start": "stencil build --dev --watch --serve",
+    "test": "stencil test --spec --e2e",
+    "test.watch": "stencil test --spec --e2e --watchAll",
+    "generate": "stencil generate"
+  },
+  "devDependencies": {
+    "@stencil/core": "^1.8.4",
+    "@types/jest": "24.0.25",
+    "jest": "24.9.0",
+    "jest-cli": "24.9.0"
+  },
+  "license": "MIT"
+}

@@ -1,3 +1,92 @@
 :host {
+  --duo-radio--size: 20px;
+
+  display: inline-flex;
+  position: relative;
+  user-select: none;
+  vertical-align: baseline;
+}
+
+:host(:focus) {
+  outline: none;
+}
+
+.control {
+  align-items: center;
+  display: inline-flex;
+  background: var(--duo-background-400);
+  background-clip: padding-box;
+  border: solid 1px transparent;
+  border-radius: 50%;
+  box-sizing: border-box;
+  height: var(--duo-radio--size);
+  justify-content: center;
+  position: relative;
+  width: var(--duo-radio--size);
+}
+
+.control:before,
+.control:after {
+  background: transparent;
+  border-radius: 50%;
+  content: "";
+  position: absolute;
+  margin: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.control:before {
+  background: var(--duo-border-400);
+  border-radius: inherit;
+  margin: -1px;
+  z-index: -1;
+}
+
+.control:hover:before {
+  background: var(--duo-color-400);
+}
+
+:host(:focus) input[type="checkbox"] + .control:before {
+  background: var(--duo-color-400);
+}
+
+.control:after {
+  background: transparent;
+  border-radius: inherit;
+  opacity: 0.2;
+  z-index: -2;
+  margin: 0;
+  transition: 300ms;
+}
+
+:host(:focus) input[type="radio"] + .control:after {
+  background: var(--duo-color-400);
+  margin: -4px;
+}
+
+input[type="radio"] {
+  z-index: -1;
+  opacity: 0;
+  width: 0;
+  margin: 0;
+  display: none;
+  position: absolute;
+}
+
+.target {
+  background: var(--duo-color-uno-400);
+  border-radius: 50%;
+  height: var(--duo-radio--size);
   display: block;
+  position: absolute;
+  transform: scale(0, 0);
+  transition: 300ms;
+  width: var(--duo-radio--size);
+}
+
+input[type="radio"]:checked + .control > .target {
+  transform: scale(0.5, 0.5);
 }

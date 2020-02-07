@@ -32,7 +32,13 @@ export namespace Components {
     'type': string;
     'value': string | number;
   }
-  interface DuoRadio {}
+  interface DuoRadio {
+    'checked': boolean;
+    'disabled': boolean;
+    'name': string;
+    'tabindex': number;
+    'value': string | number;
+  }
   interface MyComponent {
     /**
     * The first name
@@ -128,7 +134,14 @@ declare namespace LocalJSX {
     'type'?: string;
     'value'?: string | number;
   }
-  interface DuoRadio {}
+  interface DuoRadio {
+    'checked'?: boolean;
+    'disabled'?: boolean;
+    'name'?: string;
+    'onSelected'?: (event: CustomEvent<void | string | number>) => void;
+    'tabindex'?: number;
+    'value'?: string | number;
+  }
   interface MyComponent {
     /**
     * The first name

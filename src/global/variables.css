@@ -6,7 +6,10 @@
 
   --duo-background-400: #ffffff;
 
-  --duo-color-400: linear-gradient(to right, #61d4b3, #fdd365);
+  --duo-color-400: linear-gradient(45deg, #61d4b3, #fdd365);
+
+  --duo-color-uno-400: #61d4b3;
+  --duo-color-duo-400: #fdd365;
 
   --duo-font-color: hsl(0, 0, 7);
 

@@ -41,7 +41,7 @@
   opacity: 0.2;
   border-radius: 6px;
   z-index: -2;
-  margin: 0px;
+  margin: 0;
   transition: 300ms ease-in-out;
 }
 

@@ -14,7 +14,22 @@
     <link rel="stylesheet" type="text/css" href="/build/duo.css" />
   </head>
   <body>
-    <duo-button label="Sample" />
-    <duo-input placeholder="Placeholder" />
+    <duo-checkbox></duo-checkbox>
+    <duo-input
+      id="input"
+      placeholder="Placeholder"
+    ></duo-input>
+    <duo-button
+      id="button"
+      label="Sample"
+    ></duo-button>
+
+    <script>
+      const button = document.getElementById('button');
+      button.addEventListener('click', () => {
+        const input = document.getElementById('input');
+        input.setAttribute('focused', 'true');
+      });
+    </script>
   </body>
 </html>

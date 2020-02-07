@@ -1,3 +1,101 @@
 :host {
+  --duo-checkbox--size: 20px;
+
+  position: relative;
+  margin-bottom: 0;
+  max-height: var(--duo-checkbox--size);
+  display: inline-flex;
+  user-select: none;
+  vertical-align: baseline;
+}
+
+:host(:focus) {
+  outline: none;
+}
+
+input[type="checkbox"] {
+  z-index: -1;
+  opacity: 0;
+  width: 0;
+  margin: 0;
+  display: none;
+  position: absolute;
+}
+
+input[type="checkbox"]:checked {
+  outline: none;
+}
+
+.control {
+  align-items: center;
+  background: var(--duo-background-400);
+  background-clip: padding-box;
+  border: solid 1px transparent;
+  border-radius: 4px;
+  box-sizing: border-box;
+  display: inline-flex;
+  height: var(--duo-checkbox--size);
+  justify-content: center;
+  position: relative;
+  transition: 300ms;
+  width: var(--duo-checkbox--size);
+}
+
+.control:before,
+.control:after {
+  background: transparent;
+  content: "";
+  position: absolute;
+  margin: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.control:before {
+  background: var(--duo-border-400);
+  border-radius: inherit;
+  margin: -1px;
+  z-index: -1;
+}
+
+.control:hover:before {
+  background: var(--duo-color-400);
+}
+
+/*input[type="checkbox"]:checked + .control:before {*/
+/*  background: var(--duo-color-400);*/
+/*}*/
+
+:host(:focus) input[type="checkbox"] + .control:before {
+  background: var(--duo-color-400);
+}
+
+.control:after {
+  background: transparent;
+  opacity: 0.2;
+  border-radius: 6px;
+  z-index: -2;
+  margin: 0;
+  transition: 300ms;
+}
+
+:host(:focus) input[type="checkbox"] + .control:after {
+  background: var(--duo-color-400);
+  margin: -4px;
+}
+
+svg {
   display: block;
+  position: absolute;
+  height: var(--duo-checkbox--size);
+  width: var(--duo-checkbox--size);
+  fill: var(--duo-color-uno-400);
+  transform: scale(0, 0);
+  transition: 300ms;
+}
+
+input[type="checkbox"]:checked + .control > svg {
+  transform: scale(1, 1);
 }

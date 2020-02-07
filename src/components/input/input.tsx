@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop } from "@stencil/core";
+import {Component, Host, h, Prop, Watch} from "@stencil/core";
 
 @Component({
   tag: "duo-input",
@@ -6,11 +6,21 @@ import { Component, Host, h, Prop } from "@stencil/core";
   scoped: true
 })
 export class Input {
+  private input!: HTMLInputElement;
+
   @Prop({ reflect: true }) placeholder: string;
   @Prop({ reflect: true }) type: string;
   @Prop({ reflect: true }) name: string;
   @Prop({ reflect: true }) disabled: boolean;
   @Prop({ reflect: true, mutable: true }) value: string | number;
+  @Prop({ reflect: true, mutable: true }) focused: boolean;
+
+  @Watch("focused")
+  watchFocus(newValue: boolean) {
+    if (!newValue) return;
+
+    this.input.focus();
+  }
 
   render() {
     return (
@@ -28,6 +38,7 @@ export class Input {
           value={this.value}
           onInput={this.setValue}
           disabled={this.disabled}
+          ref={(el: HTMLInputElement) => this.input = el}
         />
 
         <div class="addon">

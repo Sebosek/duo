@@ -15,10 +15,18 @@ export namespace Components {
     'label': string;
   }
   interface DuoCaption {}
-  interface DuoCheckbox {}
+  interface DuoCheckbox {
+    'checked': boolean;
+    'disabled': boolean;
+    'intermediate': boolean;
+    'name': string;
+    'tabindex': number;
+    'value': string | number;
+  }
   interface DuoControl {}
   interface DuoInput {
     'disabled': boolean;
+    'focused': boolean;
     'name': string;
     'placeholder': string;
     'type': string;
@@ -102,10 +110,19 @@ declare namespace LocalJSX {
     'label'?: string;
   }
   interface DuoCaption {}
-  interface DuoCheckbox {}
+  interface DuoCheckbox {
+    'checked'?: boolean;
+    'disabled'?: boolean;
+    'intermediate'?: boolean;
+    'name'?: string;
+    'onChanged'?: (event: CustomEvent<string | number | boolean>) => void;
+    'tabindex'?: number;
+    'value'?: string | number;
+  }
   interface DuoControl {}
   interface DuoInput {
     'disabled'?: boolean;
+    'focused'?: boolean;
     'name'?: string;
     'placeholder'?: string;
     'type'?: string;

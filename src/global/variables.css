@@ -11,6 +11,9 @@
   --duo-color-uno-400: #61d4b3;
   --duo-color-duo-400: #fdd365;
 
+  --duo-radius: 4px;
+  --duo-opacity: 0.4;
+
   --duo-font-color: hsl(0, 0, 7);
 
   --duo-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,

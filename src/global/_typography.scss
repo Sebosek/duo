@@ -1,0 +1,49 @@
+.typography {
+  --duo-typography-margin: 0;
+  --duo-typography-line-height: 1.5;
+  --duo-typography-weight: normal;
+
+  line-height: var(--duo-typography-line-height);
+  font-family: var(--duo-font-family);
+  font-size: var(--duo-font-size);
+
+  h1, h2, h3, h4, h5, p {
+    line-height: var(--duo-typography-line-height);
+    font-size: var(--duo-font-size);
+    font-weight: var(--duo-typography-weight);
+    margin: var(--duo-typography-margin);
+  }
+
+  h1 {
+    --duo-typography-line-height: normal;
+    --duo-font-size: calc(1rem * var(--duo-font-scale) * var(--duo-font-scale) * var(--duo-font-scale) * var(--duo-font-scale) * var(--duo-font-scale));
+    --duo-typography-weight: 600;
+    --duo-typography-margin: calc(2 * var(--duo-vertical-rhythm)) 0 0 0;
+  }
+
+  h2 {
+    --duo-typography-line-height: normal;
+    --duo-font-size: calc(1rem * var(--duo-font-scale) * var(--duo-font-scale) * var(--duo-font-scale) * var(--duo-font-scale));
+    --duo-typography-weight: 500;
+    --duo-typography-margin: calc(1.5 * var(--duo-vertical-rhythm)) 0 0 0;
+  }
+
+  h3 {
+    --duo-typography-line-height: normal;
+    --duo-font-size: calc(1rem * var(--duo-font-scale) * var(--duo-font-scale) * var(--duo-font-scale));
+    --duo-typography-weight: 500;
+    --duo-typography-margin: var(--duo-vertical-rhythm) 0 0 0;
+  }
+
+  h4 {
+    --duo-typography-line-height: normal;
+    --duo-font-size: calc(1rem * var(--duo-font-scale) * var(--duo-font-scale));
+    --duo-typography-weight: 500;
+    --duo-typography-margin: var(--duo-vertical-rhythm) 0 0 0;
+  }
+
+  p {
+    --duo-typography-line-height: 1.5;
+    --duo-typography-margin: calc(1rem * var(--duo-font-scale)) 0 0 0;
+  }
+}

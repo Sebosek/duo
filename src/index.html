@@ -14,23 +14,40 @@
     <link rel="stylesheet" type="text/css" href="/build/duo.css" />
   </head>
   <body>
-    <duo-radio
-      name="radio"
-      value="foo"
-    ></duo-radio>
-    <duo-radio
-      name="radio"
-      value="bar"
-    ></duo-radio>
-    <duo-checkbox></duo-checkbox>
-    <duo-input
-      id="input"
-      placeholder="Placeholder"
-    ></duo-input>
-    <duo-button
-      id="button"
-      label="Sample"
-    ></duo-button>
+    <div class="typography">
+      <div class="duo-grid duo-grid-sm center">
+        <div class="col-3">
+          <label>
+            <duo-radio
+              name="radio"
+              value="foo"
+            ></duo-radio>
+            <span>Value foo</span>
+          </label>
+          <label>
+            <duo-radio
+              name="radio"
+              value="bar"
+            ></duo-radio>
+            <span>Value bar</span>
+          </label>
+
+        </div>
+        <div class="col-3">
+          <duo-checkbox></duo-checkbox>
+        </div>
+        <div class="col-6">
+          <duo-input
+            id="input"
+            placeholder="Placeholder"
+          ></duo-input>
+          <duo-button
+            id="button"
+            label="Sample"
+          ></duo-button>
+        </div>
+      </div>
+    </div>
 
     <script>
       const button = document.getElementById('button');

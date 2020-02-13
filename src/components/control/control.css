@@ -1,3 +1,24 @@
-:host {
-  display: block;
+.control {
+  --duo-control--size: 32px;
+  --duo-control--padding: calc(var(--duo-control--size) / 8);
+
+  border-radius: var(--duo-radius);
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-flex;
+  padding: var(--duo-control--padding);
+  overflow: hidden;
+  height: var(--duo-control--size);
+  width: var(--duo-control--size);
+}
+
+.control::slotted(svg) {
+  fill: var(--duo-border-400);
+  transition: fill 300ms;
+  height: 100%;
+  width: 100%;
+}
+
+.control:hover::slotted(svg) {
+  fill: var(--duo-border-800);
 }

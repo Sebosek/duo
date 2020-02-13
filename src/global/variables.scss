@@ -29,3 +29,7 @@
   --duo-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Ubuntu, "Helvetica Neue", Arial, sans-serif;
 }
+
+.danger {
+  --duo-color-400: linear-gradient(45deg, #c02739, #ff7c7c);
+}

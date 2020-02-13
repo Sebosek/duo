@@ -32,6 +32,14 @@ export namespace Components {
     'type': string;
     'value': string | number;
   }
+  interface DuoPassword {
+    'disabled': boolean;
+    'focused': boolean;
+    'name': string;
+    'placeholder': string;
+    'readable': boolean;
+    'value': string | number;
+  }
   interface DuoRadio {
     'checked': boolean;
     'disabled': boolean;
@@ -88,6 +96,12 @@ declare global {
     new (): HTMLDuoInputElement;
   };
 
+  interface HTMLDuoPasswordElement extends Components.DuoPassword, HTMLStencilElement {}
+  var HTMLDuoPasswordElement: {
+    prototype: HTMLDuoPasswordElement;
+    new (): HTMLDuoPasswordElement;
+  };
+
   interface HTMLDuoRadioElement extends Components.DuoRadio, HTMLStencilElement {}
   var HTMLDuoRadioElement: {
     prototype: HTMLDuoRadioElement;
@@ -105,6 +119,7 @@ declare global {
     'duo-checkbox': HTMLDuoCheckboxElement;
     'duo-control': HTMLDuoControlElement;
     'duo-input': HTMLDuoInputElement;
+    'duo-password': HTMLDuoPasswordElement;
     'duo-radio': HTMLDuoRadioElement;
     'my-component': HTMLMyComponentElement;
   }
@@ -132,6 +147,14 @@ declare namespace LocalJSX {
     'name'?: string;
     'placeholder'?: string;
     'type'?: string;
+    'value'?: string | number;
+  }
+  interface DuoPassword {
+    'disabled'?: boolean;
+    'focused'?: boolean;
+    'name'?: string;
+    'placeholder'?: string;
+    'readable'?: boolean;
     'value'?: string | number;
   }
   interface DuoRadio {
@@ -163,6 +186,7 @@ declare namespace LocalJSX {
     'duo-checkbox': DuoCheckbox;
     'duo-control': DuoControl;
     'duo-input': DuoInput;
+    'duo-password': DuoPassword;
     'duo-radio': DuoRadio;
     'my-component': MyComponent;
   }
@@ -179,6 +203,7 @@ declare module "@stencil/core" {
       'duo-checkbox': LocalJSX.DuoCheckbox & JSXBase.HTMLAttributes<HTMLDuoCheckboxElement>;
       'duo-control': LocalJSX.DuoControl & JSXBase.HTMLAttributes<HTMLDuoControlElement>;
       'duo-input': LocalJSX.DuoInput & JSXBase.HTMLAttributes<HTMLDuoInputElement>;
+      'duo-password': LocalJSX.DuoPassword & JSXBase.HTMLAttributes<HTMLDuoPasswordElement>;
       'duo-radio': LocalJSX.DuoRadio & JSXBase.HTMLAttributes<HTMLDuoRadioElement>;
       'my-component': LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
     }

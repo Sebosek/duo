@@ -26,9 +26,7 @@ export class Input {
     return (
       <Host>
         <div class="addon">
-          <div class="control">
-            <slot name="prefix" />
-          </div>
+          <slot name="prefix" />
         </div>
 
         <input
@@ -42,9 +40,7 @@ export class Input {
         />
 
         <div class="addon">
-          <div class="control">
-            <slot name="sufix" />
-          </div>
+          <slot name="suffix" />
         </div>
       </Host>
     );

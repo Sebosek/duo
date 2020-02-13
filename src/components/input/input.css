@@ -53,6 +53,7 @@
 input {
   border: none;
   background-color: transparent;
+  box-sizing: border-box;
   font-size: calc(1rem * 0.875);
   font-family: var(--duo-font-family);
   padding: 0 calc(1em * 1.4);
@@ -63,6 +64,18 @@ input {
 
 input:focus {
   outline: none;
+}
+
+.addon {
+  background: transparent;
+  align-self: stretch;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 12px;
+}
+
+.addon:empty {
+  padding: 0;
 }
 
 /* .addon {

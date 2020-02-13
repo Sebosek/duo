@@ -1,18 +1,16 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, h } from '@stencil/core';
 
 @Component({
   tag: 'duo-control',
   styleUrl: 'control.css',
-  shadow: true
+  scoped: true
 })
 export class Control {
-
   render() {
     return (
-      <Host>
+      <div class="control">
         <slot></slot>
-      </Host>
+      </div>
     );
   }
-
 }

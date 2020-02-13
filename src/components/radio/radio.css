@@ -15,6 +15,7 @@
   align-items: center;
   display: inline-flex;
   background: var(--duo-background-400);
+  /*background: var(--duo-color-400);*/
   background-clip: padding-box;
   border: solid 1px transparent;
   border-radius: 50%;
@@ -53,9 +54,9 @@
   background: var(--duo-color-400);
 }
 
-input[type="radio"]:checked + .control::before {
-  background: var(--duo-color-400);
-}
+/*input[type="radio"]:checked + .control::before {*/
+/*  background: var(--duo-color-400);*/
+/*}*/
 
 .control:after {
   background: transparent;
@@ -82,15 +83,18 @@ input[type="radio"] {
 
 .target {
   background: var(--duo-color-uno-400);
+  /*background: var(--duo-background-400);*/
   border-radius: 50%;
   height: var(--duo-radio--size);
   display: block;
   position: absolute;
   transform: scale(0, 0);
+  /*transform: scale(0.9, 0.9);*/
   transition: 300ms;
   width: var(--duo-radio--size);
 }
 
 input[type="radio"]:checked + .control > .target {
   transform: scale(0.5, 0.5);
+  /*transform: scale(0.2, 0.2);*/
 }

@@ -14,7 +14,9 @@ export namespace Components {
     'disabled': boolean;
     'label': string;
   }
-  interface DuoCaption {}
+  interface DuoCaption {
+    'type': 'info' | 'success' | 'question' | 'error';
+  }
   interface DuoCheckbox {
     'checked': boolean;
     'disabled': boolean;
@@ -130,7 +132,9 @@ declare namespace LocalJSX {
     'disabled'?: boolean;
     'label'?: string;
   }
-  interface DuoCaption {}
+  interface DuoCaption {
+    'type'?: 'info' | 'success' | 'question' | 'error';
+  }
   interface DuoCheckbox {
     'checked'?: boolean;
     'disabled'?: boolean;

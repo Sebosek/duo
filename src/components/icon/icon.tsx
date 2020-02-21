@@ -1,6 +1,6 @@
 import { Component, h, Host, Prop } from '@stencil/core';
 import {
-  CloseEyeRenderer, IconRenderer, OpenEyeRenderer, SuccessRenderer, ErrorRenderer
+  CloseEyeRenderer, IconRenderer, OpenEyeRenderer, SuccessRenderer, ErrorRenderer, InfoRenderer
 } from "./renderers";
 
 @Component({
@@ -16,6 +16,7 @@ export class Icon {
     new CloseEyeRenderer(),
     new SuccessRenderer(),
     new ErrorRenderer(),
+    new InfoRenderer(),
   ];
 
   render() {

@@ -7,7 +7,9 @@
 
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
-
+import {
+  State,
+} from './components/validators/state';
 
 export namespace Components {
   interface DuoButton {
@@ -50,6 +52,24 @@ export namespace Components {
     'tabindex': number;
     'value': string | number;
   }
+  interface DuoRegexp {
+    'flags': string;
+    'pattern': string;
+    'state': State;
+    'validate': (value: string | number | string[]) => Promise<void>;
+  }
+  interface DuoRequired {
+    'state': State;
+    'validate': (value: string | number | string[]) => Promise<void>;
+  }
+  interface DuoTimer {
+    'state': State;
+    'validate': () => Promise<void>;
+  }
+  interface DuoValidationMessage {
+    'type': 'error' | 'success' | 'info';
+  }
+  interface DuoValidator {}
   interface MyComponent {
     /**
     * The first name
@@ -117,6 +137,36 @@ declare global {
     new (): HTMLDuoRadioElement;
   };
 
+  interface HTMLDuoRegexpElement extends Components.DuoRegexp, HTMLStencilElement {}
+  var HTMLDuoRegexpElement: {
+    prototype: HTMLDuoRegexpElement;
+    new (): HTMLDuoRegexpElement;
+  };
+
+  interface HTMLDuoRequiredElement extends Components.DuoRequired, HTMLStencilElement {}
+  var HTMLDuoRequiredElement: {
+    prototype: HTMLDuoRequiredElement;
+    new (): HTMLDuoRequiredElement;
+  };
+
+  interface HTMLDuoTimerElement extends Components.DuoTimer, HTMLStencilElement {}
+  var HTMLDuoTimerElement: {
+    prototype: HTMLDuoTimerElement;
+    new (): HTMLDuoTimerElement;
+  };
+
+  interface HTMLDuoValidationMessageElement extends Components.DuoValidationMessage, HTMLStencilElement {}
+  var HTMLDuoValidationMessageElement: {
+    prototype: HTMLDuoValidationMessageElement;
+    new (): HTMLDuoValidationMessageElement;
+  };
+
+  interface HTMLDuoValidatorElement extends Components.DuoValidator, HTMLStencilElement {}
+  var HTMLDuoValidatorElement: {
+    prototype: HTMLDuoValidatorElement;
+    new (): HTMLDuoValidatorElement;
+  };
+
   interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
   var HTMLMyComponentElement: {
     prototype: HTMLMyComponentElement;
@@ -131,6 +181,11 @@ declare global {
     'duo-input': HTMLDuoInputElement;
     'duo-password': HTMLDuoPasswordElement;
     'duo-radio': HTMLDuoRadioElement;
+    'duo-regexp': HTMLDuoRegexpElement;
+    'duo-required': HTMLDuoRequiredElement;
+    'duo-timer': HTMLDuoTimerElement;
+    'duo-validation-message': HTMLDuoValidationMessageElement;
+    'duo-validator': HTMLDuoValidatorElement;
     'my-component': HTMLMyComponentElement;
   }
 }
@@ -178,6 +233,21 @@ declare namespace LocalJSX {
     'tabindex'?: number;
     'value'?: string | number;
   }
+  interface DuoRegexp {
+    'flags'?: string;
+    'pattern'?: string;
+    'state'?: State;
+  }
+  interface DuoRequired {
+    'state'?: State;
+  }
+  interface DuoTimer {
+    'state'?: State;
+  }
+  interface DuoValidationMessage {
+    'type'?: 'error' | 'success' | 'info';
+  }
+  interface DuoValidator {}
   interface MyComponent {
     /**
     * The first name
@@ -202,6 +272,11 @@ declare namespace LocalJSX {
     'duo-input': DuoInput;
     'duo-password': DuoPassword;
     'duo-radio': DuoRadio;
+    'duo-regexp': DuoRegexp;
+    'duo-required': DuoRequired;
+    'duo-timer': DuoTimer;
+    'duo-validation-message': DuoValidationMessage;
+    'duo-validator': DuoValidator;
     'my-component': MyComponent;
   }
 }
@@ -220,6 +295,11 @@ declare module "@stencil/core" {
       'duo-input': LocalJSX.DuoInput & JSXBase.HTMLAttributes<HTMLDuoInputElement>;
       'duo-password': LocalJSX.DuoPassword & JSXBase.HTMLAttributes<HTMLDuoPasswordElement>;
       'duo-radio': LocalJSX.DuoRadio & JSXBase.HTMLAttributes<HTMLDuoRadioElement>;
+      'duo-regexp': LocalJSX.DuoRegexp & JSXBase.HTMLAttributes<HTMLDuoRegexpElement>;
+      'duo-required': LocalJSX.DuoRequired & JSXBase.HTMLAttributes<HTMLDuoRequiredElement>;
+      'duo-timer': LocalJSX.DuoTimer & JSXBase.HTMLAttributes<HTMLDuoTimerElement>;
+      'duo-validation-message': LocalJSX.DuoValidationMessage & JSXBase.HTMLAttributes<HTMLDuoValidationMessageElement>;
+      'duo-validator': LocalJSX.DuoValidator & JSXBase.HTMLAttributes<HTMLDuoValidatorElement>;
       'my-component': LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
     }
   }

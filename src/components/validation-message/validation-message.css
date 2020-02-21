@@ -1,0 +1,39 @@
+:host {
+  align-items: center;
+  display: flex;
+  padding-top: 4px;
+}
+
+:host duo-icon {
+  --duo-icon--size: 16px;
+
+  margin-right: 4px;
+}
+
+:host duo-caption {
+  display: inline-flex;
+}
+
+:host(.error) duo-icon {
+  --duo-icon--color: #c02739;
+}
+
+:host(.error) duo-caption {
+  --duo-caption--color: #c02739;
+}
+
+:host(.info) duo-icon {
+  --duo-icon--color: #8ac6d1;
+}
+
+:host(.info) duo-caption {
+  --duo-caption--color: #8ac6d1;
+}
+
+:host(.success) duo-icon {
+  --duo-icon--color: #8cba51;
+}
+
+:host(.success) duo-caption {
+  --duo-caption--color: #8cba51;
+}

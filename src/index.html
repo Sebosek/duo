@@ -12,6 +12,43 @@
     <script nomodule src="/build/duo.js"></script>
 
     <link rel="stylesheet" type="text/css" href="/build/duo.css" />
+    <style type="text/css">
+      .form-item {
+        display: block;
+        margin-bottom: 24px;
+      }
+
+      .form-bullet {
+        display: block;
+        float: left;
+        padding-top: 2px;
+        margin-right: 12px;
+      }
+
+      .form-title {
+        font-weight: 500;
+        margin-bottom: 4px;
+      }
+
+      .form-item .form-message {
+        align-items: center;
+        display: flex;
+        padding-top: 4px;
+      }
+
+      .form-item .form-message duo-icon {
+        --duo-icon--size: 16px;
+        --duo-icon--color: #c02739;
+
+        margin-right: 4px;
+      }
+
+      .form-item .form-message duo-caption {
+        --duo-caption--color: #c02739;
+
+        display: inline-flex;
+      }
+    </style>
   </head>
   <body>
     <div class="typography">
@@ -19,7 +56,78 @@
         <div class="col-12">
           <h1>Radio</h1>
           <p>Sample of radio control.</p>
+
+          <label class="form-item danger">
+            <div class="form-bullet">
+              <duo-radio
+                name="radio"
+                value="foo"
+              ></duo-radio>
+            </div>
+            <div class="form-title">
+              <span>Foo radio value</span>
+              <duo-caption>This is a description for related radio.</duo-caption>
+            </div>
+          </label>
+
+          <label class="form-item">
+            <div class="form-bullet">
+              <duo-radio
+                name="radio"
+                value="bar"
+              ></duo-radio>
+            </div>
+            <div class="form-title">
+              <span>Bar radio value</span>
+              <duo-caption>This is a description for related radio.</duo-caption>
+            </div>
+          </label>
+
+          <label class="form-item">
+            <div class="form-bullet">
+              <duo-radio
+                name="radio"
+                value="baz"
+              ></duo-radio>
+            </div>
+            <div class="form-title">
+              <span>Baz radio value</span>
+              <duo-caption>This is a description for related radio.</duo-caption>
+            </div>
+          </label>
         </div>
+
+        <div class="col-12">
+          <h1>Checkbox</h1>
+          <p>Sample of checkbox control.</p>
+
+          <label class="form-item">
+            <div class="form-bullet">
+              <duo-checkbox></duo-checkbox>
+            </div>
+            <div class="form-title">
+              <span>Checkbox in form item</span>
+              <duo-caption>This is a checkbox caption.</duo-caption>
+            </div>
+          </label>
+        </div>
+
+        <div class="col-12">
+          <h1>Input</h1>
+
+          <label class="form-item error">
+            <div class="form-title">Checkbox in form item</div>
+            <duo-input
+              placeholder="Placeholder"
+            ></duo-input>
+            <div class="form-message">
+              <duo-icon
+                icon="error"
+              ></duo-icon><duo-caption>Here comes an error message.</duo-caption>
+            </div>
+          </label>
+        </div>
+
         <div class="col-3">
           <label>
             <duo-radio

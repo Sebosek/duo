@@ -1,0 +1,16 @@
+:host {
+  --duo-icon--size: 24px;
+  --duo-icon--color: var(--duo-font-color);
+
+  box-sizing: border-box;
+  display: inline-flex;
+  overflow: hidden;
+  height: var(--duo-icon--size);
+  width: var(--duo-icon--size);
+}
+
+:host > svg {
+  fill: var(--duo-icon--color);
+  height: inherit;
+  width: inherit;
+}

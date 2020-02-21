@@ -14,9 +14,7 @@ export namespace Components {
     'disabled': boolean;
     'label': string;
   }
-  interface DuoCaption {
-    'type': 'info' | 'success' | 'question' | 'error';
-  }
+  interface DuoCaption {}
   interface DuoCheckbox {
     'checked': boolean;
     'disabled': boolean;
@@ -26,6 +24,9 @@ export namespace Components {
     'value': string | number;
   }
   interface DuoControl {}
+  interface DuoIcon {
+    'icon': string;
+  }
   interface DuoInput {
     'disabled': boolean;
     'focused': boolean;
@@ -92,6 +93,12 @@ declare global {
     new (): HTMLDuoControlElement;
   };
 
+  interface HTMLDuoIconElement extends Components.DuoIcon, HTMLStencilElement {}
+  var HTMLDuoIconElement: {
+    prototype: HTMLDuoIconElement;
+    new (): HTMLDuoIconElement;
+  };
+
   interface HTMLDuoInputElement extends Components.DuoInput, HTMLStencilElement {}
   var HTMLDuoInputElement: {
     prototype: HTMLDuoInputElement;
@@ -120,6 +127,7 @@ declare global {
     'duo-caption': HTMLDuoCaptionElement;
     'duo-checkbox': HTMLDuoCheckboxElement;
     'duo-control': HTMLDuoControlElement;
+    'duo-icon': HTMLDuoIconElement;
     'duo-input': HTMLDuoInputElement;
     'duo-password': HTMLDuoPasswordElement;
     'duo-radio': HTMLDuoRadioElement;
@@ -132,9 +140,7 @@ declare namespace LocalJSX {
     'disabled'?: boolean;
     'label'?: string;
   }
-  interface DuoCaption {
-    'type'?: 'info' | 'success' | 'question' | 'error';
-  }
+  interface DuoCaption {}
   interface DuoCheckbox {
     'checked'?: boolean;
     'disabled'?: boolean;
@@ -145,6 +151,9 @@ declare namespace LocalJSX {
     'value'?: string | number;
   }
   interface DuoControl {}
+  interface DuoIcon {
+    'icon'?: string;
+  }
   interface DuoInput {
     'disabled'?: boolean;
     'focused'?: boolean;
@@ -189,6 +198,7 @@ declare namespace LocalJSX {
     'duo-caption': DuoCaption;
     'duo-checkbox': DuoCheckbox;
     'duo-control': DuoControl;
+    'duo-icon': DuoIcon;
     'duo-input': DuoInput;
     'duo-password': DuoPassword;
     'duo-radio': DuoRadio;
@@ -206,6 +216,7 @@ declare module "@stencil/core" {
       'duo-caption': LocalJSX.DuoCaption & JSXBase.HTMLAttributes<HTMLDuoCaptionElement>;
       'duo-checkbox': LocalJSX.DuoCheckbox & JSXBase.HTMLAttributes<HTMLDuoCheckboxElement>;
       'duo-control': LocalJSX.DuoControl & JSXBase.HTMLAttributes<HTMLDuoControlElement>;
+      'duo-icon': LocalJSX.DuoIcon & JSXBase.HTMLAttributes<HTMLDuoIconElement>;
       'duo-input': LocalJSX.DuoInput & JSXBase.HTMLAttributes<HTMLDuoInputElement>;
       'duo-password': LocalJSX.DuoPassword & JSXBase.HTMLAttributes<HTMLDuoPasswordElement>;
       'duo-radio': LocalJSX.DuoRadio & JSXBase.HTMLAttributes<HTMLDuoRadioElement>;

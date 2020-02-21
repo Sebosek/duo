@@ -1,19 +1,11 @@
 :host {
+  --duo-caption--color: var(--duo-border-600);
+
   align-items: center;
-  line-height: 1;
+  color: var(--duo-caption--color);
+  display: flex;
+  line-height: 1.5;
   font-size: var(--duo-font-size--supplementary);
   font-family: var(--duo-font-family);
   font-weight: 400;
-  display: flex;
-}
-
-.icon {
-  display: flex;
-  margin-right: 4px;
-}
-
-.icon > svg {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
 }

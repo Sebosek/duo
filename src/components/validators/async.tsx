@@ -15,14 +15,14 @@ export class Async implements Validatable {
 
   @Watch('succeeded')
   watchSucceeded(newValue: boolean) {
+    console.log('async >> watch >>', this.state);
     if (this.state !== 'running') return;
 
     this.state = newValue ? 'success' : 'failed';
+    console.log('async >> watch >> new state >>', this.state);
   }
 
   render() {
-    console.log('async >>', this.state);
-
     if (this.state === 'failed') return (
       <duo-validation-message type="error">
         <slot />
@@ -46,11 +46,20 @@ export class Async implements Validatable {
 
   @Method()
   validate(value: string | number | string[]): Promise<void> {
+    console.log('async >> validate >>', this.state);
     if (this.state === 'running') return;
 
     this.state = 'running';
     this.event.emit({ value });
 
+    console.log('async >> validate >> new state >>', this.state);
     return Promise.resolve();
   }
+
+  // private x() {
+  //   return (
+  //     this.state === 'success' && this.succeeded ||
+  //     this.state === 'failed' && !this.succeeded
+  //   );
+  // }
 }

@@ -10,8 +10,16 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
   State,
 } from './components/validators/state';
+import {
+  AsyncValidatorEvent,
+} from './components/validators/asyncValidatorEvent';
 
 export namespace Components {
+  interface DuoAsync {
+    'state': State;
+    'succeeded': boolean;
+    'validate': (value: string | number | string[]) => Promise<void>;
+  }
   interface DuoButton {
     'disabled': boolean;
     'label': string;
@@ -63,6 +71,7 @@ export namespace Components {
     'validate': (value: string | number | string[]) => Promise<void>;
   }
   interface DuoTimer {
+    'desired': State;
     'state': State;
     'validate': () => Promise<void>;
   }
@@ -88,6 +97,12 @@ export namespace Components {
 
 declare global {
 
+
+  interface HTMLDuoAsyncElement extends Components.DuoAsync, HTMLStencilElement {}
+  var HTMLDuoAsyncElement: {
+    prototype: HTMLDuoAsyncElement;
+    new (): HTMLDuoAsyncElement;
+  };
 
   interface HTMLDuoButtonElement extends Components.DuoButton, HTMLStencilElement {}
   var HTMLDuoButtonElement: {
@@ -173,6 +188,7 @@ declare global {
     new (): HTMLMyComponentElement;
   };
   interface HTMLElementTagNameMap {
+    'duo-async': HTMLDuoAsyncElement;
     'duo-button': HTMLDuoButtonElement;
     'duo-caption': HTMLDuoCaptionElement;
     'duo-checkbox': HTMLDuoCheckboxElement;
@@ -191,6 +207,11 @@ declare global {
 }
 
 declare namespace LocalJSX {
+  interface DuoAsync {
+    'onRun-validation'?: (event: CustomEvent<AsyncValidatorEvent>) => void;
+    'state'?: State;
+    'succeeded'?: boolean;
+  }
   interface DuoButton {
     'disabled'?: boolean;
     'label'?: string;
@@ -242,6 +263,7 @@ declare namespace LocalJSX {
     'state'?: State;
   }
   interface DuoTimer {
+    'desired'?: State;
     'state'?: State;
   }
   interface DuoValidationMessage {
@@ -264,6 +286,7 @@ declare namespace LocalJSX {
   }
 
   interface IntrinsicElements {
+    'duo-async': DuoAsync;
     'duo-button': DuoButton;
     'duo-caption': DuoCaption;
     'duo-checkbox': DuoCheckbox;
@@ -287,6 +310,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
+      'duo-async': LocalJSX.DuoAsync & JSXBase.HTMLAttributes<HTMLDuoAsyncElement>;
       'duo-button': LocalJSX.DuoButton & JSXBase.HTMLAttributes<HTMLDuoButtonElement>;
       'duo-caption': LocalJSX.DuoCaption & JSXBase.HTMLAttributes<HTMLDuoCaptionElement>;
       'duo-checkbox': LocalJSX.DuoCheckbox & JSXBase.HTMLAttributes<HTMLDuoCheckboxElement>;

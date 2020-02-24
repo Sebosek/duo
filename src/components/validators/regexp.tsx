@@ -23,15 +23,12 @@ export class RegExpValidator implements Validatable {
 
   @Method()
   validate(value: string | number | string[]): Promise<void> {
-    console.log('regexp >> current state at beginning', this.state);
-
     const regex = new RegExp(this.pattern, this.flags);
     const result = regex.test(value.toString());
 
-    if (this.state === 'failed' && result) this.state = 'init';
+    if (this.state === 'failed' && result) this.state = 'success';
     if (!result) this.state = 'failed';
 
-    console.log('regexp >> current state at the end', this.state);
     return Promise.resolve();
   }
 }

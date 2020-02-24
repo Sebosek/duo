@@ -4,6 +4,7 @@ import {Validatable} from "./validatable";
 enum Status {
   Pristine, // Initial state
   Touched, // Ready to run validations
+  Valid, // Input value is fine
   Running, // Live validations
 }
 
@@ -31,23 +32,22 @@ export class Validator {
     if (this._state === Status.Pristine) {
       // Transition to touched state on first touch
       this._state = Status.Touched;
-
-      console.log('now i am in touched state');
       return;
     }
+  }
 
-    // Transition to running state from touched
-    this._state = Status.Running;
-    console.log('now i am in running state');
+  @Listen('focusout')
+  async blurHandler(ev: UIEvent) {
+    const target = ev.target as HTMLInputElement;
+    const value = target.value || '';
+
+    await this.validate(value);
   }
 
   @Listen('input')
   async inputHandler(ev: UIEvent) {
     const target = ev.target as HTMLInputElement;
     const value = target.value || '';
-
-    // Transition to running state when an empty value is reached
-    if (!value) this._state = Status.Running;
 
     await Promise.all([this.immediate(value), this.validate(value)]);
   }
@@ -59,6 +59,10 @@ export class Validator {
     const config = {attributes: true, childList: true, subtree: true};
     this._observer = new MutationObserver(this.mutations.bind(this));
     this._observer.observe(this.node, config);
+  }
+
+  componentDidUnload() {
+    this._observer.disconnect();
   }
 
   render() {
@@ -73,16 +77,16 @@ export class Validator {
     );
   }
 
-  private async immediate(value: string | string[] |number): Promise<void> {
+  private async immediate(value: string | string[] | number): Promise<void> {
     const validators = this._immediate.map(el => el as Partial<Validatable>).filter(v => !!v.validate);
 
     console.log('running immediate validators', validators);
     await Promise.all(validators.map(v => v.validate(value)));
   }
 
-  private async validate(value: string | string[] |number): Promise<void> {
+  private async validate(value: string | string[] | number): Promise<void> {
     // Escape while validator is in touched state
-    if (this._state === Status.Touched) return;
+    if (this._state === Status.Pristine) return;
 
     const validators = this._validators.map(el => el as Partial<Validatable>).filter(v => !!v.validate);
 
@@ -94,8 +98,8 @@ export class Validator {
     mutations.forEach((mutation) => {
       if (mutation.type === 'childList') {
         // change at elements
-        console.log('change at elements');
         this._validators = Array.from(this.node.querySelectorAll('[data-duo-validator]'));
+        this._immediate = Array.from(this.node.querySelectorAll('[data-duo-validator=immediate]'));
 
         return;
       }
@@ -103,7 +107,10 @@ export class Validator {
       if (mutation.type === 'attributes' && mutation.attributeName === 'state') {
         // change at some state attribute inside validator
         const validators = Array.from(this.node.querySelectorAll('[data-duo-validator]'));
-        this.error = validators.some(v => v.getAttribute('state') === 'failed');
+        const error = validators.some(v => v.getAttribute('state') === 'failed');
+
+        this._state = !error ? Status.Valid : Status.Running;
+        this.error = error;
       }
     })
   }

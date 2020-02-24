@@ -8,6 +8,7 @@ import {Validatable} from "./validatable";
 })
 export class Timer implements Validatable {
   @Prop({ reflect: true, mutable: true }) state: State = 'init';
+  @Prop({ reflect: true }) desired: State = 'success';
 
   render() {
     if (this.state === 'running') return (
@@ -16,6 +17,10 @@ export class Timer implements Validatable {
 
     if (this.state === 'success') return (
       <duo-validation-message type="success"><slot /></duo-validation-message>
+    );
+
+    if (this.state === 'failed') return (
+      <duo-validation-message type="error">Timer failed.</duo-validation-message>
     );
 
     return null;
@@ -32,7 +37,7 @@ export class Timer implements Validatable {
 
     this.state = 'running';
     await this.timer();
-    this.state = 'success';
+    this.state = this.desired;
   }
 
   private timer() {

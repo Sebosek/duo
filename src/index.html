@@ -43,7 +43,12 @@
             <div class="form-message">
               <duo-required data-duo-validator>This field is required</duo-required>
               <duo-regexp data-duo-validator pattern="test">This field must be equal the 'test' value</duo-regexp>
-<!--              <duo-timer data-duo-validator="immediate">Success validator</duo-timer>-->
+<!--              <duo-timer data-duo-validator="immediate" desired="success">Success validator</duo-timer>-->
+              <duo-async data-duo-validator id="async">
+                <span>Failed async validator</span>
+                <span slot="success">Success state of async validator</span>
+                <span slot="pending">Async validator is currently pending</span>
+              </duo-async>
             </div>
           </duo-validator>
         </div>
@@ -165,6 +170,19 @@
         const input = document.getElementById('input');
         input.setAttribute('focused', 'true');
       });
+
+      (async function () {
+        await customElements.whenDefined('duo-async');
+
+        const validator = document.getElementById('async');
+        if (!validator) return;
+
+        validator.addEventListener('run-validation', (e) => {
+          if (!e.detail.value) return;
+
+          setTimeout(() => validator.setAttribute('succeeded', window.confirm('Success?')), 0);
+        })
+      })();
     </script>
   </body>
 </html>

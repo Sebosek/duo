@@ -21,12 +21,9 @@ export class Required implements Validatable {
 
   @Method()
   validate(value: string | number | string[]): Promise<void> {
-    console.log('required >> current state at beginning', this.state);
-
-    if (this.state === 'failed' && value) this.state = 'init';
+    if (this.state === 'failed' && value) this.state = 'success';
     if (!value) this.state = 'failed';
 
-    console.log('required >> current state at the end', this.state);
     return Promise.resolve();
   }
 }

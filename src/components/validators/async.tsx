@@ -1,4 +1,4 @@
-import {Component, h, Method, Prop, Event, EventEmitter, Watch} from "@stencil/core";
+import {Component, h, Method, Prop, Event, EventEmitter} from "@stencil/core";
 import {State} from "./state";
 import {Validatable} from "./validatable";
 import {AsyncValidatorEvent} from "./asyncValidatorEvent";
@@ -9,18 +9,10 @@ import {AsyncValidatorEvent} from "./asyncValidatorEvent";
 })
 export class Async implements Validatable {
   @Prop({ reflect: true, mutable: true }) state: State = 'init';
-  @Prop({ reflect: true, mutable: true }) succeeded: boolean = false;
 
   @Event({ eventName: 'run-validation' }) event: EventEmitter<AsyncValidatorEvent>;
 
-  @Watch('succeeded')
-  watchSucceeded(newValue: boolean) {
-    console.log('async >> watch >>', this.state);
-    if (this.state !== 'running') return;
-
-    this.state = newValue ? 'success' : 'failed';
-    console.log('async >> watch >> new state >>', this.state);
-  }
+  private _value: string | string[] | number | null = null;
 
   render() {
     if (this.state === 'failed') return (
@@ -46,20 +38,22 @@ export class Async implements Validatable {
 
   @Method()
   validate(value: string | number | string[]): Promise<void> {
-    console.log('async >> validate >>', this.state);
-    if (this.state === 'running') return;
+    if (this.isValueSame(value)) return;
 
     this.state = 'running';
     this.event.emit({ value });
 
-    console.log('async >> validate >> new state >>', this.state);
+    this._value = value;
     return Promise.resolve();
   }
 
-  // private x() {
-  //   return (
-  //     this.state === 'success' && this.succeeded ||
-  //     this.state === 'failed' && !this.succeeded
-  //   );
-  // }
+  private isValueSame(value: string | number | string[]) {
+    if (Array.isArray(value) && Array.isArray(this._value)) {
+      const arr = Array.from(this._value);
+
+      return Array.from(value).some(v => arr.includes(v));
+    }
+
+    return value === this._value;
+  }
 }

@@ -180,7 +180,13 @@
         validator.addEventListener('run-validation', (e) => {
           if (!e.detail.value) return;
 
-          setTimeout(() => validator.setAttribute('succeeded', window.confirm('Success?')), 0);
+          setTimeout(() => {
+            if (window.confirm('Success?')) {
+              validator.setAttribute('state', 'success');
+            } else {
+              validator.setAttribute('state', 'failed');
+            }
+          }, 0);
         })
       })();
     </script>

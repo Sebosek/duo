@@ -17,7 +17,6 @@ import {
 export namespace Components {
   interface DuoAsync {
     'state': State;
-    'succeeded': boolean;
     'validate': (value: string | number | string[]) => Promise<void>;
   }
   interface DuoButton {
@@ -210,7 +209,6 @@ declare namespace LocalJSX {
   interface DuoAsync {
     'onRun-validation'?: (event: CustomEvent<AsyncValidatorEvent>) => void;
     'state'?: State;
-    'succeeded'?: boolean;
   }
   interface DuoButton {
     'disabled'?: boolean;

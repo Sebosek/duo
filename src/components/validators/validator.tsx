@@ -80,7 +80,7 @@ export class Validator {
   private async immediate(value: string | string[] | number): Promise<void> {
     const validators = this._immediate.map(el => el as Partial<Validatable>).filter(v => !!v.validate);
 
-    console.log('running immediate validators', validators);
+    // console.log('running immediate validators', validators);
     await Promise.all(validators.map(v => v.validate(value)));
   }
 
@@ -90,7 +90,7 @@ export class Validator {
 
     const validators = this._validators.map(el => el as Partial<Validatable>).filter(v => !!v.validate);
 
-    console.log('running validators', validators);
+    // console.log('running validators', validators);
     await Promise.all(validators.map(v => v.validate(value)));
   }
 

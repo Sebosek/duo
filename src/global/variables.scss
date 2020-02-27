@@ -1,8 +1,19 @@
 @import "grid";
 @import "helpers";
-@import "typography";
+// @import "typography";
 
 :root {
+  /* AFTER NAMING DEFINED */
+  --duo-color--base: #ffffff;
+
+  --duo-color--border-200: #fbfbfc;
+  --duo-color--border-400: #d7dbe2;
+  --duo-color--border-600: #b2bac8;
+  --duo-color--border-800: #8d99ae;
+
+  --duo-color--gradient-400: linear-gradient(45deg, #61d4b3, #fdd365);
+
+  /* BEFORE DEFINED NAMING */
   --duo-border-200: #fbfbfc;
   --duo-border-400: #d7dbe2;
   --duo-border-600: #b2bac8;

@@ -41,6 +41,7 @@ export namespace Components {
     'focused': boolean;
     'name': string;
     'placeholder': string;
+    'readonly': boolean;
     'type': string;
     'value': string | number;
   }
@@ -233,6 +234,7 @@ declare namespace LocalJSX {
     'focused'?: boolean;
     'name'?: string;
     'placeholder'?: string;
+    'readonly'?: boolean;
     'type'?: string;
     'value'?: string | number;
   }

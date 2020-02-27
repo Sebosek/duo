@@ -26,150 +26,237 @@
       }
 
       .form-title {
+        font-family: var(--duo-font-family);
         font-weight: 500;
         margin-bottom: 4px;
+      }
+
+      article {
+        display: block;
+        width: 768px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        font: 1.8rem var(--duo-font-family);
+        font-weight: 500;
+        line-height: 1.5;
+        margin: 1.5rem 0 0;
+      }
+
+      h2 {
+        font: 1.4rem var(--duo-font-family);
+        font-weight: 500;
+        line-height: 1.3;
+        margin: 1.5rem 0 0;
+      }
+
+      p {
+        font-family: var(--duo-font-family);
+        margin: 0 0 1rem;
+      }
+
+      .demo {
+        border: 1px solid var(--duo-border-400);
+        border-radius: 4px;
+        display: flex;
+        justify-content: center;
+        padding: 40px;
+        position: relative;
+      }
+
+      .demo::after {
+        color: var(--duo-background-400);
+        content: 'demo';
+        font: 12px var(--duo-font-family);
+        font-weight: 500;
+        line-height: 1.5;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: var(--duo-border-400);
+        text-transform: uppercase;
+        padding: 0 8px;
+        border-radius: 0 4px 0 4px;
       }
     </style>
   </head>
   <body>
-    <div class="typography">
-      <div class="duo-grid duo-grid-sm center">
-        <div class="col-12">
-          <h1>Experimental declarative validator</h1>
-
-          <duo-validator class="form-item">
-            <div class="form-title">Input in form item</div>
-            <duo-input placeholder="Placeholder"></duo-input>
-            <div class="form-message">
-              <duo-required data-duo-validator>This field is required</duo-required>
-              <duo-regexp data-duo-validator pattern="test">This field must be equal the 'test' value</duo-regexp>
-<!--              <duo-timer data-duo-validator="immediate" desired="success">Success validator</duo-timer>-->
-              <duo-async data-duo-validator id="async">
-                <span>Failed async validator</span>
-                <span slot="success">Success state of async validator</span>
-                <span slot="pending">Async validator is currently pending</span>
-              </duo-async>
-            </div>
-          </duo-validator>
-        </div>
-        <div class="col-12">
-          <h1>Radio</h1>
-          <p>Sample of radio control.</p>
-
-          <label class="form-item danger">
-            <div class="form-bullet">
-              <duo-radio
-                name="radio"
-                value="foo"
-              ></duo-radio>
-            </div>
-            <div class="form-title">
-              <span>Foo radio value</span>
-              <duo-caption>This is a description for related radio.</duo-caption>
-            </div>
-          </label>
-
-          <label class="form-item">
-            <div class="form-bullet">
-              <duo-radio
-                name="radio"
-                value="bar"
-              ></duo-radio>
-            </div>
-            <div class="form-title">
-              <span>Bar radio value</span>
-              <duo-caption>This is a description for related radio.</duo-caption>
-            </div>
-          </label>
-
-          <label class="form-item">
-            <div class="form-bullet">
-              <duo-radio
-                name="radio"
-                value="baz"
-              ></duo-radio>
-            </div>
-            <div class="form-title">
-              <span>Baz radio value</span>
-              <duo-caption>This is a description for related radio.</duo-caption>
-            </div>
-          </label>
-        </div>
-
-        <div class="col-12">
-          <h1>Checkbox</h1>
-          <p>Sample of checkbox control.</p>
-
-          <label class="form-item">
-            <div class="form-bullet">
-              <duo-checkbox></duo-checkbox>
-            </div>
-            <div class="form-title">
-              <span>Checkbox in form item</span>
-              <duo-caption>This is a checkbox caption.</duo-caption>
-            </div>
-          </label>
-        </div>
-
-        <div class="col-12">
-          <h1>Input</h1>
-
-          <label class="form-item error">
-            <div class="form-title">Checkbox in form item</div>
-            <duo-input
-              placeholder="Placeholder"
-            ></duo-input>
-            <div class="form-message">
-              <duo-icon
-                icon="error"
-              ></duo-icon><duo-caption>Here comes an error message.</duo-caption>
-            </div>
-          </label>
-        </div>
-
-        <div class="col-3">
-          <label>
-            <duo-radio
-              name="radio"
-              value="foo"
-            ></duo-radio>
-            <span>Value foo</span>
-          </label>
-          <label>
-            <duo-radio
-              name="radio"
-              value="bar"
-            ></duo-radio>
-            <span>Value bar</span>
-          </label>
-
-        </div>
-        <div class="col-3">
-          <duo-checkbox></duo-checkbox>
-        </div>
-        <div class="col-6">
-          <duo-input
-            id="input"
-            placeholder="Placeholder"
-          ></duo-input>
-          <duo-button
-            id="button"
-            label="Sample"
-          ></duo-button>
-          <duo-password
-            id="pass"
-            placeholder="Placeholder"
-          ></duo-password>
-        </div>
+    <article>
+      <h1>Input</h1>
+      <p>The input components represents a text field for user input.</p>
+      <div class="demo">
+        <duo-input
+          placeholder="Placeholder"
+        ></duo-input>
       </div>
-    </div>
+
+      <h2>Addons applied</h2>
+      <div class="demo">
+        <duo-input
+          placeholder="Placeholder"
+        >
+          <span slot="prefix">👌</span>
+          <span slot="suffix">🐛</span>
+        </duo-input>
+      </div>
+
+      <h2>Disabled</h2>
+      <div class="demo">
+        <duo-input
+          value="Defined value"
+          disabled
+        ></duo-input>
+      </div>
+
+      <h2>Readonly</h2>
+      <div class="demo">
+        <duo-input
+          value="Defined value"
+          readonly
+        ></duo-input>
+      </div>
+    </article>
+<!--    <div class="typography">-->
+<!--      <div class="duo-grid duo-grid-sm center">-->
+<!--        <div class="col-12">-->
+<!--          <h1>Experimental declarative validator</h1>-->
+
+<!--          <duo-validator class="form-item">-->
+<!--            <div class="form-title">Input in form item</div>-->
+<!--            <duo-input placeholder="Placeholder"></duo-input>-->
+<!--            <div class="form-message">-->
+<!--              <duo-required data-duo-validator>This field is required</duo-required>-->
+<!--              <duo-regexp data-duo-validator pattern="test">This field must be equal the 'test' value</duo-regexp>-->
+<!--              <duo-timer data-duo-validator="immediate" desired="success">Success validator</duo-timer>-->
+<!--              <duo-async data-duo-validator id="async">-->
+<!--                <span>Failed async validator</span>-->
+<!--                <span slot="success">Success state of async validator</span>-->
+<!--                <span slot="pending">Async validator is currently pending</span>-->
+<!--              </duo-async>-->
+<!--            </div>-->
+<!--          </duo-validator>-->
+<!--        </div>-->
+<!--        <div class="col-12">-->
+<!--          <h1>Radio</h1>-->
+<!--          <p>Sample of radio control.</p>-->
+
+<!--          <label class="form-item danger">-->
+<!--            <div class="form-bullet">-->
+<!--              <duo-radio-->
+<!--                name="radio"-->
+<!--                value="foo"-->
+<!--              ></duo-radio>-->
+<!--            </div>-->
+<!--            <div class="form-title">-->
+<!--              <span>Foo radio value</span>-->
+<!--              <duo-caption>This is a description for related radio.</duo-caption>-->
+<!--            </div>-->
+<!--          </label>-->
+
+<!--          <label class="form-item">-->
+<!--            <div class="form-bullet">-->
+<!--              <duo-radio-->
+<!--                name="radio"-->
+<!--                value="bar"-->
+<!--              ></duo-radio>-->
+<!--            </div>-->
+<!--            <div class="form-title">-->
+<!--              <span>Bar radio value</span>-->
+<!--              <duo-caption>This is a description for related radio.</duo-caption>-->
+<!--            </div>-->
+<!--          </label>-->
+
+<!--          <label class="form-item">-->
+<!--            <div class="form-bullet">-->
+<!--              <duo-radio-->
+<!--                name="radio"-->
+<!--                value="baz"-->
+<!--              ></duo-radio>-->
+<!--            </div>-->
+<!--            <div class="form-title">-->
+<!--              <span>Baz radio value</span>-->
+<!--              <duo-caption>This is a description for related radio.</duo-caption>-->
+<!--            </div>-->
+<!--          </label>-->
+<!--        </div>-->
+
+<!--        <div class="col-12">-->
+<!--          <h1>Checkbox</h1>-->
+<!--          <p>Sample of checkbox control.</p>-->
+
+<!--          <label class="form-item">-->
+<!--            <div class="form-bullet">-->
+<!--              <duo-checkbox></duo-checkbox>-->
+<!--            </div>-->
+<!--            <div class="form-title">-->
+<!--              <span>Checkbox in form item</span>-->
+<!--              <duo-caption>This is a checkbox caption.</duo-caption>-->
+<!--            </div>-->
+<!--          </label>-->
+<!--        </div>-->
+
+<!--        <div class="col-12">-->
+<!--          <h1>Input</h1>-->
+
+<!--          <label class="form-item error">-->
+<!--            <div class="form-title">Checkbox in form item</div>-->
+<!--            <duo-input-->
+<!--              placeholder="Placeholder"-->
+<!--            ></duo-input>-->
+<!--            <div class="form-message">-->
+<!--              <duo-icon-->
+<!--                icon="error"-->
+<!--              ></duo-icon><duo-caption>Here comes an error message.</duo-caption>-->
+<!--            </div>-->
+<!--          </label>-->
+<!--        </div>-->
+
+<!--        <div class="col-3">-->
+<!--          <label>-->
+<!--            <duo-radio-->
+<!--              name="radio"-->
+<!--              value="foo"-->
+<!--            ></duo-radio>-->
+<!--            <span>Value foo</span>-->
+<!--          </label>-->
+<!--          <label>-->
+<!--            <duo-radio-->
+<!--              name="radio"-->
+<!--              value="bar"-->
+<!--            ></duo-radio>-->
+<!--            <span>Value bar</span>-->
+<!--          </label>-->
+
+<!--        </div>-->
+<!--        <div class="col-3">-->
+<!--          <duo-checkbox></duo-checkbox>-->
+<!--        </div>-->
+<!--        <div class="col-6">-->
+<!--          <duo-input-->
+<!--            id="input"-->
+<!--            placeholder="Placeholder"-->
+<!--          ></duo-input>-->
+<!--          <duo-button-->
+<!--            id="button"-->
+<!--            label="Sample"-->
+<!--          ></duo-button>-->
+<!--          <duo-password-->
+<!--            id="pass"-->
+<!--            placeholder="Placeholder"-->
+<!--          ></duo-password>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
 
     <script>
       const button = document.getElementById('button');
-      button.addEventListener('click', () => {
-        const input = document.getElementById('input');
-        input.setAttribute('focused', 'true');
-      });
+      if (button) {
+        button.addEventListener('click', () => {
+          const input = document.getElementById('input');
+          input.setAttribute('focused', 'true');
+        });
+      }
 
       (async function () {
         await customElements.whenDefined('duo-async');

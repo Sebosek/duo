@@ -12,6 +12,7 @@ export class Input {
   @Prop({ reflect: true }) type: string;
   @Prop({ reflect: true }) name: string;
   @Prop({ reflect: true }) disabled: boolean;
+  @Prop({ reflect: true }) readonly: boolean;
   @Prop({ reflect: true, mutable: true }) value: string | number;
   @Prop({ reflect: true, mutable: true }) focused: boolean;
 
@@ -25,8 +26,12 @@ export class Input {
   render() {
     return (
       <Host>
-        <div class="addon">
+        <div class="extra">
           <slot name="prefix" />
+        </div>
+
+        <div class="extra">
+          <slot name="suffix" />
         </div>
 
         <input
@@ -36,12 +41,13 @@ export class Input {
           value={this.value}
           onInput={this.setValue}
           disabled={this.disabled}
+          readonly={this.readonly}
           ref={(el: HTMLInputElement) => this.input = el}
         />
 
-        <div class="addon">
-          <slot name="suffix" />
-        </div>
+        {/*<div class="addon">*/}
+        {/*  <slot name="suffix" />*/}
+        {/*</div>*/}
       </Host>
     );
   }

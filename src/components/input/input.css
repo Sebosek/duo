@@ -1,15 +1,20 @@
 :host {
+  --duo-input-color--base: var(--duo-color--base);
+  --duo-input-color--border: var(--duo-color--border-400);
+  --duo-input-color--gradient: var(--duo-color--gradient-400);
+  --duo-input-font--color: var(--duo-font-color);
+  --duo-input-radius: var(--duo-radius);
+
   align-items: baseline;
-  background: var(--duo-background-400);
+  background: var(--duo-input-color--base);
   background-clip: padding-box;
   border: solid 1px transparent;
-  border-radius: var(--duo-radius);
+  border-radius: var(--duo-input-radius);
   box-sizing: border-box;
   display: flex;
-  font-size: calc(1rem * 0.875);
-  font-family: var(--duo-font-family);
   padding: 0;
   position: relative;
+  width: 100%;
 }
 
 :host:before,
@@ -25,7 +30,7 @@
 }
 
 :host:before {
-  background: var(--duo-border-400);
+  background: var(--duo-input-color--border);
   border-radius: inherit;
   margin: -1px;
   z-index: -1;
@@ -33,32 +38,41 @@
 
 :host(:focus-within):before,
 :host(:hover):before {
-  background: var(--duo-color-400);
+  background: var(--duo-input-color--gradient);
 }
 
 :host:after {
   background: transparent;
   opacity: var(--duo-opacity);
-  border-radius: calc(1.5 * var(--duo-radius));
+  border-radius: calc(1.5 * var(--duo-input-radius));
   z-index: -2;
   margin: 0;
   transition: 300ms ease-in-out;
 }
 
 :host(:focus-within):after {
-  background: var(--duo-color-400);
+  background: var(--duo-input-color--gradient);
   margin: -4px;
 }
 
+/**
+ * Input is using custom order elements thanks to flex box.
+ * The reason behind is to be able to 'disable' left or right padding of input,
+ * when prefix or suffix is applied.
+ */
+
 input {
   border: none;
-  background-color: transparent;
+  background-color: var(--duo-input-color--base);
+  border-radius: var(--duo-input-radius);
   box-sizing: border-box;
+  color: var(--duo-input-font--color);
   font-size: calc(1rem * 0.875);
   font-family: var(--duo-font-family);
-  padding: 0 calc(1em * 1.4);
-  line-height: 1;
   height: 44px;
+  line-height: 1;
+  order: 1;
+  padding: 0 calc(1em * 1.4);
   width: 100%;
 }
 
@@ -66,7 +80,7 @@ input:focus {
   outline: none;
 }
 
-.addon {
+.extra {
   background: transparent;
   align-self: stretch;
   display: inline-flex;
@@ -74,81 +88,34 @@ input:focus {
   padding: 0 12px;
 }
 
-.addon:empty {
+/* Prefix */
+:host .extra {
+  order: 0;
+}
+
+/* Suffix */
+:host .extra + .extra {
+  order: 2;
+}
+
+/* Do not show prefix or suffix if they are empty */
+.extra:empty {
   padding: 0;
 }
 
-/* .addon {
-  background: transparent;
-  align-self: stretch;
-  display: inline-flex;
-  align-items: center;
-  padding: 0 12px;
-
-  .control {
-    height: 60%;
-    display: inline-flex;
-    align-items: center;
-    margin-left: -12px;
-    margin-right: -12px;
-    padding: 0 12px;
-  }
-
-  &:first-child > .input__addon__control:last-child {
-    border-right: 1px solid $color-border-400;
-    margin-left: -12px;
-  }
-
-  &:last-child > .input__addon__control:first-child {
-    border-left: 1px solid $color-border-400;
-    margin-right: -12px;
-  }
+/* Prefix is filled, so remove left padding of input */
+.extra:not(:empty) + input {
+  padding-left: 0;
 }
 
-& > input {
-  border: none;
-  background-color: transparent;
-  color: $color-font;
-  font-family: map-val($typography, "--xui-font-family");
-  font-size: 1em;
-  padding: calc(#{map-val($typography, "--xui-font-size--base")} * 0.8) #{map-val(
-      $typography,
-      "--xui-font-size--base"
-    )};
-  padding: 0 #{map-val($typography, "--xui-font-size--base")};
-  line-height: 3;
-  width: 100%;
-
-  &:focus {
-    outline: none;
-  }
+/* Suffix is filled, so remove right padding of input */
+.extra + .extra:not(:empty) + input {
+  padding-right: 0;
 }
 
-&.hover,
-&:hover {
-  border-color: $color-primary-400;
+
+:host([disabled]) {
+  --duo-input-color--base: var(--duo-color--border-200);
+  --duo-input-font--color: var(--duo-color--border-800);
+  --duo-input-color--gradient: var(--duo-color--border-400);
 }
-
-&.focus:focus-within,
-&:focus-within {
-  border-color: $color-primary-400;
-  box-shadow: 0 0 0 2px $color-primary-300;
-}
-
-&.active,
-&:active {
-  border-color: $color-primary-600;
-  box-shadow: 0 0 0 2px $color-primary-300;
-}
-
-&[disabled] {
-  background: $color-border-300;
-  border-color: $color-border-600;
-  pointer-events: none;
-
-  &.focus,
-  &:focus,
-  &:focus-within {
-    box-shadow: none;
-  }
-} */

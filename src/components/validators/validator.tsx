@@ -15,6 +15,12 @@ enum Status {
 
 @Component({
   tag: 'duo-validator',
+  styles: `
+    :host {
+      display: block;
+      width: 100%;
+    }
+  `,
   scoped: true,
 })
 export class Validator {

@@ -44,10 +44,6 @@ export class Input {
           readonly={this.readonly}
           ref={(el: HTMLInputElement) => this.input = el}
         />
-
-        {/*<div class="addon">*/}
-        {/*  <slot name="suffix" />*/}
-        {/*</div>*/}
       </Host>
     );
   }

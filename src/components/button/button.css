@@ -1,12 +1,17 @@
 button {
+  --duo-button-color--gradient: var(--duo-color--gradient-400);
+  --duo-button-color--background: var(--duo-color--base);
+  --duo-button-color--border: var(--duo-color--border-400);
+  --duo-button-font--color: var(--duo-font-color);
+
   align-items: center;
-  background: var(--duo-background-400);
+  background: var(--duo-button-color--background);
   background-clip: padding-box;
   border: solid 1px transparent;
   border-radius: var(--duo-radius);
   box-sizing: border-box;
 
-  color: var(--duo-font-color);
+  color: var(--duo-button-font--color);
   cursor: pointer;
   display: inline-flex;
   font-family: var(--duo-font-family);
@@ -53,10 +58,18 @@ button:before {
 
 button:focus:before,
 button:hover:before {
-  background: var(--duo-color-400);
+  background: var(--duo-button-color--gradient);
 }
 
 button:focus:after {
-  background: var(--duo-color-400);
+  background: var(--duo-button-color--gradient);
   margin: -4px;
+}
+
+button[disabled] {
+  --duo-button-color--background: var(--duo-color--border-200);
+  --duo-button-color--gradient: var(--duo-color--border-400);
+  --duo-button-font--color: var(--duo-color--border-800);
+
+  cursor: not-allowed;
 }

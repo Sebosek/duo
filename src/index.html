@@ -117,6 +117,41 @@
         ></duo-input>
       </div>
     </article>
+    <article>
+      <h1>Validators</h1>
+      <div class="demo">
+        <duo-validator>
+          <duo-input placeholder="Placeholder"></duo-input>
+          <duo-required data-duo-validator>This field is required</duo-required>
+          <duo-regexp data-duo-validator pattern="test">This field must be equal the 'test' value</duo-regexp>
+          <duo-timer data-duo-validator="immediate" desired="success">
+            <span slot="success">Timer validator the success state</span>
+            <span slot="pending">Timer validator is currently pending</span>
+          </duo-timer>
+          <duo-async data-duo-validator id="async">
+            <span>Failed async validator</span>
+            <span slot="success">Success state of async validator</span>
+            <span slot="pending">Async validator is currently pending</span>
+          </duo-async>
+        </duo-validator>
+      </div>
+    </article>
+    <article>
+      <h1>Button</h1>
+      <div class="demo">
+        <duo-button
+          label="Button text"
+        ></duo-button>
+      </div>
+
+      <h2>Disabled</h2>
+      <div class="demo">
+        <duo-button
+          label="Disabled button"
+          disabled
+        ></duo-button>
+      </div>
+    </article>
 <!--    <div class="typography">-->
 <!--      <div class="duo-grid duo-grid-sm center">-->
 <!--        <div class="col-12">-->

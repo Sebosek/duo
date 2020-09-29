@@ -12,15 +12,21 @@ export class Timer implements Validatable {
 
   render() {
     if (this.state === 'running') return (
-      <duo-validation-message type="info">Running&hellip;</duo-validation-message>
+      <duo-validation-message type="info">
+        <slot name="pending" />
+      </duo-validation-message>
     );
 
     if (this.state === 'success') return (
-      <duo-validation-message type="success"><slot /></duo-validation-message>
+      <duo-validation-message type="success">
+        <slot name="success" />
+      </duo-validation-message>
     );
 
     if (this.state === 'failed') return (
-      <duo-validation-message type="error">Timer failed.</duo-validation-message>
+      <duo-validation-message type="error">
+        <slot />
+      </duo-validation-message>
     );
 
     return null;
